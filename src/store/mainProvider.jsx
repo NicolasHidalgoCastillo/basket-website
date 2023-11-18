@@ -1,5 +1,12 @@
 const MainProvider = ({ children }) => {
-  return <p>h0ola</p>;
+  return (
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={themes(customization)}>
+        <CssBaseline />
+        <NavigationScroll>{children}</NavigationScroll>
+      </ThemeProvider>
+    </StyledEngineProvider>
+  );
 };
 
 export default MainProvider;
