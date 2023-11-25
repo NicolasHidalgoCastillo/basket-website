@@ -17,7 +17,7 @@ const LogoSection = () => {
   const { defaultId } = useAppSelector((state) => state.customizationReducer);
   const dispatch = useAppDispatch()
   return (
-    <Link href={config.defaultPath}>
+    <Link href={config.startPage}>
       <ButtonBase disableRipple onClick={() => dispatch({ type: MENU_OPEN, id: defaultId })} >
         <Logo />
       </ButtonBase>
