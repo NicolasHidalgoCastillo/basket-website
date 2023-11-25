@@ -26,6 +26,7 @@ const MainCard = forwardRef(
       shadow,
       sx = {},
       title,
+      elevation,
       ...others
     }: {
       border?: any,
@@ -39,6 +40,7 @@ const MainCard = forwardRef(
       shadow?: any,
       sx?: any,
       title?: any,
+      elevation?: number,
     },
     ref
   ) => {
