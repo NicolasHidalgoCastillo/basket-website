@@ -77,6 +77,10 @@ const ProfileSection = () => {
     setOpen(false);
   };
 
+  useEffect(() => {
+    console.log('User1', User1);
+  }, [])
+
   
   const handleListItemClick = (event: MouseEvent, index: number, route: string = "") => {
     setSelectedIndex(index);
@@ -125,7 +129,7 @@ const ProfileSection = () => {
         }}
         icon={
           <Avatar
-            src={User1}
+            src={User1.src}
             sx={{
               // ...theme.typography.mediumAvatar,
               margin: "8px 0 8px 8px !important",
