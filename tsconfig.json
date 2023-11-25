@@ -21,7 +21,7 @@
     ],
     "paths": {
       "*": ["./src/*"],
-      "@public/*": ["../public/*"],
+      "@public/*": ["./public/*"],
     },
     // "lib": ["es6", "dom"],
     "noImplicitAny": true,
