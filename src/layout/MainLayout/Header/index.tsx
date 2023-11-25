@@ -11,11 +11,12 @@ import ProfileSection from './ProfileSection';
 import NotificationSection from './NotificationSection';
 
 // assets
-import { IconMenu2 } from '@tabler/icons';
+import { IconMenu2 } from '@tabler/icons-react';
+import { FC } from 'react';
 
 // ==============================|| MAIN NAVBAR / HEADER ||============================== //
 
-const Header = ({ handleLeftDrawerToggle }) => {
+const Header = ({ handleLeftDrawerToggle }: { handleLeftDrawerToggle: Function }) => {
   const theme = useTheme();
 
   return (
@@ -37,8 +38,8 @@ const Header = ({ handleLeftDrawerToggle }) => {
           <Avatar
             variant="rounded"
             sx={{
-              ...theme.typography.commonAvatar,
-              ...theme.typography.mediumAvatar,
+              // ...theme.typography.commonAvatar,
+              // ...theme.typography.mediumAvatar,
               transition: 'all .2s ease-in-out',
               background: theme.palette.secondary.light,
               color: theme.palette.secondary.dark,
@@ -47,7 +48,7 @@ const Header = ({ handleLeftDrawerToggle }) => {
                 color: theme.palette.secondary.light
               }
             }}
-            onClick={handleLeftDrawerToggle}
+            onClick={() => handleLeftDrawerToggle()}
             color="inherit"
           >
             <IconMenu2 stroke={1.5} size="1.3rem" />
@@ -61,14 +62,10 @@ const Header = ({ handleLeftDrawerToggle }) => {
       <Box sx={{ flexGrow: 1 }} />
 
       {/* notification & profile */}
-      <NotificationSection />
+      {/* <NotificationSection /> */}
       <ProfileSection />
     </>
   );
-};
-
-Header.propTypes = {
-  handleLeftDrawerToggle: PropTypes.func
 };
 
 export default Header;

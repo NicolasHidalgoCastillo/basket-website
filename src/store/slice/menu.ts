@@ -1,24 +1,23 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import type { RootState } from "store";
+import { createSlice } from "@reduxjs/toolkit";
 
 // Define a type for the slice state
 export interface CounterState {
   value?: number;
-  enabled: boolean;
+  open: boolean;
 }
 
 // Define the initial state using that type
 const initialState: CounterState = {
-  enabled: false,
+  open: false,
 };
 
 export const menu = createSlice({
-  name: "counter",
+  name: "menu",
   // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {
     setMenuEnabled: (state) => {
-      state.enabled = !state.enabled;
+      state.open = !state.open;
     },
   },
 });

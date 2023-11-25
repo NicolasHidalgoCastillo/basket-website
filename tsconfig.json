@@ -20,7 +20,8 @@
       }
     ],
     "paths": {
-      "*": ["./src/*"]
+      "*": ["./src/*"],
+      "@public/*": ["../public/*"],
     },
     // "lib": ["es6", "dom"],
     "noImplicitAny": true,

@@ -18,8 +18,8 @@ import {
 } from '@mui/material';
 
 // assets
-import { IconBrandTelegram, IconBuildingStore, IconMailbox, IconPhoto } from '@tabler/icons';
-import User1 from 'assets/images/users/user-round.svg';
+import { IconBrandTelegram, IconBuildingStore, IconMailbox, IconPhoto } from '@tabler/icons-react';
+import User1 from '@public/assets/images/users/user-round.svg';
 
 // styles
 const ListItemWrapper = styled('div')(({ theme }) => ({
@@ -44,8 +44,8 @@ const NotificationList = () => {
   };
   const chipErrorSX = {
     ...chipSX,
-    color: theme.palette.orange.dark,
-    backgroundColor: theme.palette.orange.light,
+    // color: theme.palette.orange.dark,
+    // backgroundColor: theme.palette.orange.light,
     marginRight: '5px'
   };
 

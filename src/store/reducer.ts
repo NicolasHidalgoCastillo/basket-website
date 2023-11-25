@@ -6,9 +6,9 @@ import menu from "./slice/menu";
 
 // ==============================|| COMBINE REDUCER ||============================== //
 
-const reducer = combineReducers({
-  customization: customizationReducer,
+const rootReducer = combineReducers({
+  customizationReducer: customizationReducer,
   menu: menu,
 });
 
-export default reducer;
+export default rootReducer;

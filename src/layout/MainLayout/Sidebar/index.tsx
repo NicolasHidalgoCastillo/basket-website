@@ -6,7 +6,7 @@ import { Box, Chip, Drawer, Stack, useMediaQuery } from '@mui/material';
 
 // third-party
 import PerfectScrollbar from 'react-perfect-scrollbar';
-import { BrowserView, MobileView } from 'react-device-detect';
+// import { BrowserView, MobileView } from 'react-device-detect';
 
 // project imports
 import MenuList from './MenuList';
@@ -16,7 +16,7 @@ import { drawerWidth } from 'store/constant';
 
 // ==============================|| SIDEBAR DRAWER ||============================== //
 
-const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
+const Sidebar = ({ drawerOpen, drawerToggle, window }: { drawerOpen: boolean, drawerToggle: () => void, window?: { document: { body: any } } }) => {
   const theme = useTheme();
   const matchUpMd = useMediaQuery(theme.breakpoints.up('md'));
 
@@ -27,21 +27,22 @@ const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
           <LogoSection />
         </Box>
       </Box>
-      <BrowserView>
-        <PerfectScrollbar
-          component="div"
-          style={{
-            height: !matchUpMd ? 'calc(100vh - 56px)' : 'calc(100vh - 88px)',
-            paddingLeft: '16px',
-            paddingRight: '16px'
-          }}
-        >
-          <MenuList />
-          <MenuCard />
-          <Stack direction="row" justifyContent="center" sx={{ mb: 2 }}>
-            <Chip label={process.env.REACT_APP_VERSION} disabled chipcolor="secondary" size="small" sx={{ cursor: 'pointer' }} />
-          </Stack>
-        </PerfectScrollbar>
+      <PerfectScrollbar
+        component="div"
+        style={{
+          height: !matchUpMd ? 'calc(100vh - 56px)' : 'calc(100vh - 88px)',
+          paddingLeft: '16px',
+          paddingRight: '16px'
+        }}
+      >
+        <MenuList />
+        <MenuCard />
+        <Stack direction="row" justifyContent="center" sx={{ mb: 2 }}>
+          <Chip label={process.env.REACT_APP_VERSION} disabled={true} color="secondary" size="small" sx={{ cursor: 'pointer' }} />
+        </Stack>
+      </PerfectScrollbar>
+      {/* <BrowserView>
+        
       </BrowserView>
       <MobileView>
         <Box sx={{ px: 2 }}>
@@ -51,7 +52,7 @@ const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
             <Chip label={process.env.REACT_APP_VERSION} disabled chipcolor="secondary" size="small" sx={{ cursor: 'pointer' }} />
           </Stack>
         </Box>
-      </MobileView>
+      </MobileView> */}
     </>
   );
 

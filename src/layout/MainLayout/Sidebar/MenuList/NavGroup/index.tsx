@@ -10,11 +10,30 @@ import NavCollapse from '../NavCollapse';
 
 // ==============================|| SIDEBAR MENU LIST GROUP ||============================== //
 
-const NavGroup = ({ item }) => {
+const NavGroup = ({ item }: {
+  item: {
+    icon: any,
+    id: any,
+    target: any,
+    external: any,
+    url: any,
+    disabled: any,
+    title: any,
+    caption: any,
+    children: any,
+    chip: {
+      color: any
+      variant: any
+      size: any
+      label: any
+      avatar: any
+    }
+  }
+}) => {
   const theme = useTheme();
 
   // menu list collapse & items
-  const items = item.children?.map((menu) => {
+  const items = item.children?.map((menu: any) => {
     switch (menu.type) {
       case 'collapse':
         return <NavCollapse key={menu.id} menu={menu} level={1} />;
@@ -34,10 +53,10 @@ const NavGroup = ({ item }) => {
       <List
         subheader={
           item.title && (
-            <Typography variant="caption" sx={{ ...theme.typography.menuCaption }} display="block" gutterBottom>
+            <Typography variant="caption" display="block" gutterBottom>
               {item.title}
               {item.caption && (
-                <Typography variant="caption" sx={{ ...theme.typography.subMenuCaption }} display="block" gutterBottom>
+                <Typography variant="caption" display="block" gutterBottom>
                   {item.caption}
                 </Typography>
               )}

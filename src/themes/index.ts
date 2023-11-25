@@ -1,7 +1,8 @@
 import { createTheme } from '@mui/material/styles';
 
 // assets
-import colors from 'assets/scss/_themes-vars.module.scss';
+// import colors from '@public/assets/scss/_themes-vars.module.scss';
+import colors from '../../public/assets/scss/_themes-vars.module.scss'
 
 // project imports
 import componentStyleOverrides from './compStyleOverride';
@@ -32,7 +33,7 @@ export const theme = (customization: any) => {
   };
 
   const themeOptions = {
-    direction: 'ltr',
+    // direction: 'ltr',
     palette: themePalette(themeOption),
     mixins: {
       toolbar: {
@@ -43,10 +44,10 @@ export const theme = (customization: any) => {
         }
       }
     },
-    typography: themeTypography(themeOption)
+    // typography: themeTypography(themeOption)
   };
 
-  const themes = createTheme({});
+  const themes = createTheme(themeOptions);
   // const themes = createTheme();
   themes.components = componentStyleOverrides(themeOption);
 
