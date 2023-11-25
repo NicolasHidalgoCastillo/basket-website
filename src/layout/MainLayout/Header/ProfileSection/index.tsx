@@ -1,7 +1,9 @@
+'use client'
+
 import { useState, useRef, useEffect } from "react";
 
 // import { useNavigate } from 'react-router-dom';
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
 
 // material-ui
@@ -35,7 +37,7 @@ import PerfectScrollbar from "react-perfect-scrollbar";
 import MainCard from "components/cards/MainCard";
 import Transitions from "components/extended/Transitions";
 import UpgradePlanCard from "./UpgradePlanCard";
-import User1 from "@public/assets/images/users/user-round.svg";
+import User1 from "../../../../../public/assets/images/users/user-round.svg";
 
 // assets
 import {
@@ -50,7 +52,7 @@ import { useAppSelector } from "hooks";
 
 const ProfileSection = () => {
   const theme = useTheme();
-  const customization = useAppSelector((state: any) => state.customization);
+  const customization = useAppSelector((state: any) => state.customizationReducer);
   // const navigate = useNavigate();
   const navigate = useRouter();
 
@@ -62,7 +64,7 @@ const ProfileSection = () => {
   /**
    * anchorRef is used on different componets and specifying one type leads to other components throwing an error
    * */
-  const anchorRef = useRef(null);
+  const anchorRef = useRef<any>(null);
   const handleLogout = async () => {
     console.log("Logout");
   };
@@ -74,7 +76,8 @@ const ProfileSection = () => {
     setOpen(false);
   };
 
-  const handleListItemClick = (event: Event, index: number, route: string = "") => {
+  
+  const handleListItemClick = (event: MouseEvent, index: number, route: string = "") => {
     setSelectedIndex(index);
     handleClose(event);
 
@@ -82,11 +85,13 @@ const ProfileSection = () => {
       navigate.push(route);
     }
   };
+
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
   };
 
   const prevOpen = useRef(open);
+  
   useEffect(() => {
     if (prevOpen.current === true && open === false) {
       anchorRef.current.focus();
@@ -169,7 +174,7 @@ const ProfileSection = () => {
               <ClickAwayListener onClickAway={handleClose}>
                 <MainCard
                   border={false}
-                  elevation={16}
+                  // elevation={16}
                   content={false}
                   boxShadow
                   shadow={theme.shadows[16]}
@@ -300,7 +305,7 @@ const ProfileSection = () => {
                             borderRadius: `${customization.borderRadius}px`,
                           }}
                           selected={selectedIndex === 0}
-                          onClick={(event) =>
+                          onClick={(event: any) =>
                             handleListItemClick(event, 0, "#")
                           }
                         >
@@ -320,7 +325,7 @@ const ProfileSection = () => {
                             borderRadius: `${customization.borderRadius}px`,
                           }}
                           selected={selectedIndex === 1}
-                          onClick={(event) =>
+                          onClick={(event: any) =>
                             handleListItemClick(event, 1, "#")
                           }
                         >

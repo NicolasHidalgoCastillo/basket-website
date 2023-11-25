@@ -60,7 +60,7 @@ const MainLayout: FC<IChildrenProps> = ({ children }) => {
   const theme = useTheme();
   const matchDownMd = useMediaQuery(theme.breakpoints.down('md'));
   // Handle left drawer
-  const leftDrawerOpened = useAppSelector((state: any) => state.customization?.opened);
+  const leftDrawerOpened = useAppSelector((state: any) => state.customizationReducer?.opened);
   const dispatch = useAppDispatch()
   const handleLeftDrawerToggle = () => {
     dispatch({ type: SET_MENU, opened: !leftDrawerOpened });
@@ -70,7 +70,7 @@ const MainLayout: FC<IChildrenProps> = ({ children }) => {
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       {/* header */}
-      {/* <AppBar
+      <AppBar
         enableColorOnDark
         position="fixed"
         color="inherit"
@@ -83,7 +83,7 @@ const MainLayout: FC<IChildrenProps> = ({ children }) => {
         <Toolbar>
           <Header handleLeftDrawerToggle={handleLeftDrawerToggle} />
         </Toolbar>
-      </AppBar> */}
+      </AppBar>
 
       {/* drawer */}
       <Sidebar drawerOpen={!matchDownMd ? leftDrawerOpened : !leftDrawerOpened} drawerToggle={handleLeftDrawerToggle} />

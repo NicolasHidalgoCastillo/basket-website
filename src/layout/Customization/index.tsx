@@ -39,7 +39,7 @@ function valueText(value: number) {
 const Customization = () => {
   const theme = useTheme();
   const dispatch = useAppDispatch()
-  const customization = useAppSelector((state: any) => state.customization);
+  const customization = useAppSelector((state: any) => state.customizationReducer);
 
   // drawer on/off
   const [open, setOpen] = useState(false);

@@ -46,8 +46,8 @@ const OutlineInputStyle = styled(OutlinedInput, { shouldForwardProp })(({ theme 
 }));
 
 const HeaderAvatarStyle = styled(Avatar, { shouldForwardProp })(({ theme }) => ({
-  ...theme.typography.commonAvatar,
-  ...theme.typography.mediumAvatar,
+  // ...theme.typography.commonAvatar,
+  // ...theme.typography.mediumAvatar,
   background: theme.palette.secondary.light,
   color: theme.palette.secondary.dark,
   '&:hover': {
@@ -58,7 +58,7 @@ const HeaderAvatarStyle = styled(Avatar, { shouldForwardProp })(({ theme }) => (
 
 // ==============================|| SEARCH INPUT - MOBILE||============================== //
 
-const MobileSearch = ({ value, setValue, popupState }) => {
+const MobileSearch = ({ value, setValue, popupState }: { value: any, setValue: any, popupState: any }) => {
   const theme = useTheme();
 
   return (
@@ -83,16 +83,16 @@ const MobileSearch = ({ value, setValue, popupState }) => {
             <ButtonBase sx={{ borderRadius: '12px' }}>
               <Avatar
                 variant="rounded"
-                sx={{
-                  ...theme.typography.commonAvatar,
-                  ...theme.typography.mediumAvatar,
-                  background: theme.palette.orange.light,
-                  color: theme.palette.orange.dark,
-                  '&:hover': {
-                    background: theme.palette.orange.dark,
-                    color: theme.palette.orange.light
-                  }
-                }}
+                // sx={{
+                //   ...theme.typography.commonAvatar,
+                //   ...theme.typography.mediumAvatar,
+                //   background: theme.palette.orange.light,
+                //   color: theme.palette.orange.dark,
+                //   '&:hover': {
+                //     background: theme.palette.orange.dark,
+                //     color: theme.palette.orange.light
+                //   }
+                // }}
                 {...bindToggle(popupState)}
               >
                 <IconX stroke={1.5} size="1.3rem" />

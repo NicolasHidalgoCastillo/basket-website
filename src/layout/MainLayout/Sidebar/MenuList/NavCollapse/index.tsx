@@ -26,7 +26,7 @@ import { usePathname, useRouter } from "next/navigation";
 
 const NavCollapse = ({ menu, level }: { menu: any; level: any }) => {
   const theme = useTheme();
-  const customization = useSelector((state: any) => state.customization);
+  const customization = useSelector((state: any) => state.customizationReducer);
   const navigate = useRouter();
   // const navigate = useNavigate();
 
