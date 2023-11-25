@@ -9,7 +9,7 @@ const icons = { IconDashboard };
 
 const dashboard: IMenuList = {
   id: 'dashboard',
-  title: 'Dashboard',
+  title: 'Dashboard group',
   type: 'group',
   children: [
     {

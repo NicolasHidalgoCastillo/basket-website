@@ -7,31 +7,17 @@ import { Divider, List, Typography } from '@mui/material';
 // project imports
 import NavItem from '../NavItem';
 import NavCollapse from '../NavCollapse';
+import { IMenuList, INavItem } from 'interfaces';
+import customizationReducer from '../../../../../store/customizationReducer';
+import { useAppSelector } from 'hooks';
 
 // ==============================|| SIDEBAR MENU LIST GROUP ||============================== //
 
 const NavGroup = ({ item }: {
-  item: {
-    icon: any,
-    id: any,
-    target: any,
-    external: any,
-    url: any,
-    disabled: any,
-    title: any,
-    caption: any,
-    children: any,
-    chip: {
-      color: any
-      variant: any
-      size: any
-      label: any
-      avatar: any
-    }
-  }
+  item: INavItem
 }) => {
-  const theme = useTheme();
-
+  const customizationReducer = useAppSelector(state => state.customizationReducer)
+  const { opened } = customizationReducer
   // menu list collapse & items
   const items = item.children?.map((menu: any) => {
     switch (menu.type) {
@@ -51,12 +37,15 @@ const NavGroup = ({ item }: {
   return (
     <>
       <List
+        sx={{
+          pt:2
+        }}
         subheader={
-          item.title && (
-            <Typography variant="caption" display="block" gutterBottom>
+          opened && item.title && (
+            <Typography display="block" gutterBottom sx={{ fontWeight: 600, fontSize: '0.9rem' }}>
               {item.title}
               {item.caption && (
-                <Typography variant="caption" display="block" gutterBottom>
+                <Typography display="block" gutterBottom>
                   {item.caption}
                 </Typography>
               )}

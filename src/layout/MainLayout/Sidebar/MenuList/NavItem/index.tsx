@@ -17,27 +17,12 @@ import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import { usePathname } from 'next/navigation';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import Link from 'next/link';
+import { INavItem } from 'interfaces';
 
 // ==============================|| SIDEBAR MENU LIST ITEMS ||============================== //
 
 const NavItem = ({ item, level }: {
-  item: {
-    icon: any,
-    id: any,
-    target: any,
-    external: any,
-    url: any,
-    disabled: any,
-    title: any,
-    caption: any,
-    chip: {
-      color: any
-      variant: any
-      size: any
-      label: any
-      avatar: any
-    }
-  }, level: number
+  item: INavItem, level: number
 }) => {
   const theme = useTheme();
   const dispatch =
@@ -64,11 +49,13 @@ const NavItem = ({ item, level }: {
   }
 
   let listItemProps: {
-    component: any,
+    component?: any,
     href?: any,
     target?: any
   } = {
-    component: forwardRef((props, ref) => <Link  {...props} href={item.url} target={itemTarget} />)
+    component: forwardRef(function LinkComponent(props, ref) {
+      return <Link {...props} href={item.url} target={itemTarget} />;
+    })
   };
   if (item?.external) {
     listItemProps = { component: 'a', href: item.url, target: itemTarget };
@@ -98,29 +85,27 @@ const NavItem = ({ item, level }: {
       sx={{
         borderRadius: `${customization.borderRadius}px`,
         mb: 0.5,
-        alignItems: 'flex-start',
         backgroundColor: level > 1 ? 'transparent !important' : 'inherit',
         py: level > 1 ? 1 : 1.25,
-        pl: `${level * 24}px`
+        pl: customization.opened ? `${level * 24}px` : 1.5
+
       }}
       selected={customization.isOpen.findIndex((id: any) => id === item.id) > -1}
       onClick={() => itemHandler(item.id)}
     >
-      <ListItemIcon sx={{ my: 'auto', minWidth: !item?.icon ? 18 : 36 }}>{itemIcon}</ListItemIcon>
-      <ListItemText
-        primary={
-          <Typography variant={customization.isOpen.findIndex((id: any) => id === item.id) > -1 ? 'h5' : 'body1'} color="inherit">
-            {item.title}
-          </Typography>
-        }
-        secondary={
-          item.caption && (
-            <Typography variant="caption" display="block" gutterBottom>
-              {item.caption}
+
+      <ListItemIcon
+      >{itemIcon}</ListItemIcon>
+      {
+        customization.opened &&
+        <ListItemText
+          primary={
+            <Typography color="inherit" sx={{ fontSize: '0.9rem' }}>
+              {item.title}
             </Typography>
-          )
-        }
-      />
+          }
+        />
+      }
       {item.chip && (
         <Chip
           color={item.chip.color}
